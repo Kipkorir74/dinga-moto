@@ -1,7 +1,7 @@
 "use client"
 
 import { SearchManufacturerProps } from '@/types'
-import { Combobox, ComboboxButton, ComboboxInput, ComboboxOptions, Transition } from '@headlessui/react'
+import { Combobox, ComboboxButton, ComboboxInput, ComboboxOptions, ComboboxOption, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import { Fragment, useState } from 'react'
 import { manufacturers } from '@/constants/constants'
@@ -18,7 +18,7 @@ const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacture
 
     return (
         <div className='search-manufacturer'>
-            <Combobox>
+            <Combobox value={manufacturer} onChange={setManufacturer}>
                 <div className='relative w-full'>
                     <ComboboxButton className='absolute top-[14px]'>
                         <Image
@@ -41,16 +41,30 @@ const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacture
                         afterLeave={() => setQuery('')}
                     >
                         <ComboboxOptions>
-                            {filteredManufacturers.length === 0 &&
-                                query !== "" && (
-                                    <ComboboxOptions
-                                        value={query}
-                                        className='search-manufacturer__option'>
-                                            Create "{query}" 
-                                    </ComboboxOptions>
-
+                            {
+                                filteredManufacturers.map((item) => (
+                                    <ComboboxOption
+                                        key={item}
+                                        className={({ active }) =>
+                                            `relative search-manufacturer_option ${active ? 'bg-primary-blue text-white' :
+                                                'text-gray-900'} `}
+                                        value={item}
+                                    >
+                                        {({ selected, active }) => (
+                                            <>
+                                                <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>
+                                                    {item}
+                                                </span>
+                                                {selected ? (
+                                                    <span className={`absolute inset-y-0 right-0 flex items-center pl-3 
+                                                        ${active ? 'text-white' : 'text-teal-600'}`}>
+                                                    </span>
+                                                ) : null}
+                                            </>
+                                        )}
+                                    </ComboboxOption>
                                 )
-                            }
+                                )}
                         </ComboboxOptions>
                     </Transition>
 
