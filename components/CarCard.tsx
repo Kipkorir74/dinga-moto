@@ -33,7 +33,7 @@ const CarCard = ({ car }: CarCardProps) => {
                 </span>
             </p>
             <div className="relative w-full h-40 my-3 object-contain">
-                <Image src="/hero.png" alt='car model' fill priority className='' />
+                <Image src="/hero.png" alt='car model' fill priority className='object-contain' />
             </div>
             <div className='relative flex w-full mt-2'>
                 <div className='flex group-hover:invisible w-full justify-between text-gray'>
@@ -62,12 +62,12 @@ const CarCard = ({ car }: CarCardProps) => {
                         containerStyle='w-full py-[16px] rounded-full bg-primary-blue'
                         textStyles='text-white text-[14px] leading-[16px] font-bold'
                         rightIcon='/right-arrow.svg'
-                        handleClick={()=>setIsOpen(true)}
+                        handleClick={() => setIsOpen(true)}
                     />
                 </div>
             </div>
-            <CarDetails isOpen={isOpen} closeModal={()=>
-                setIsOpen{(false)} car={car}}/>
+            <CarDetails isOpen={isOpen} closeModal={() =>
+                setIsOpen(false)} car={car}/>
         </div>
     )
 }
