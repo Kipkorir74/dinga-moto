@@ -3,8 +3,14 @@ import Image from "next/image";
 import { CustomFilter, Hero, SearchBar,CarCard } from "@/components";
 import { fetchCars } from "@/utils";
 
-export default async function Home() {
-  const carsCatalogue = await fetchCars();
+export default async function Home({searchParams}) {
+  const carsCatalogue = await fetchCars({
+    manufacturer: searchParams.manufacturer || "",
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || "",
+    limit:searchParams.limit || 10,
+    model: searchParams.model || "",
+  });
   const isDataEmpty = !Array.isArray(carsCatalogue) || carsCatalogue.length < 1 || carsCatalogue;
 
   return (
