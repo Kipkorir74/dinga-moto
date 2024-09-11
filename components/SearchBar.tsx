@@ -23,7 +23,7 @@ const SearchBar = () => {
     e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!manufacturer && !model) {
+    if (manufacturer === "" && model==="") {
       return alert('Please fill in the serach bar');
     }
 
