@@ -2,13 +2,15 @@
 
 import { useState, Fragment } from 'react';
 import Image from 'next/image';
-import router, { useRouter } from 'next/router';
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } from '@headlessui/react';
 import { CustomFilterProps } from '@/types';
 import { updateSearchParams } from '@/utils';
+import { useRouter } from 'next/navigation';
+
 
 
 const CustomFilter = ({ title, options }: CustomFilterProps) => {
+  const router = useRouter();
 
   const [selected, setSelected] = useState(options[0]);
 
@@ -25,7 +27,7 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
         onChange = {(e)=> { 
           console.log(e);
           setSelected(e);
-          
+          handleUpdateParams(e);
         }}
         
       >
