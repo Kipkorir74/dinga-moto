@@ -6,7 +6,7 @@ import { use } from "react";
 import { CustomButtonProps } from "@/types";
 
 
-const Hero = ({title, containerStyle,handleClick}:CustomButtonProps) => {
+const Hero = () => {
     const handleScroll = () => {};
 
 
