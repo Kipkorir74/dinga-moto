@@ -41,7 +41,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log(manufacturer, model, year, fuel, limit);
+    console.log(manufacturer)
     getCars();
   }, [manufacturer, model, year, fuel, limit]);
 
