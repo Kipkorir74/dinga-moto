@@ -49,7 +49,7 @@ export default async function Home({searchParams}) {
             </div>
 
             <ShowMore
-              pageNumber = {(searchParams.pageNumber || 10) / 10} 
+              pageNumber = {(searchParams.limit || 10) / 10} 
               isNextPage = {(searchParams.limit || 10) > carsCatalogue.length}
             />
             
