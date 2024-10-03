@@ -1,6 +1,6 @@
 
 import Image from "next/image";
-import { CustomFilter, Hero, SearchBar,CarCard } from "@/components";
+import { CustomFilter, Hero, SearchBar,CarCard, ShowMore } from "@/components";
 import { fetchCars } from "@/utils";
 import { yearsOfProduction, fuels } from "@/constants/constants";
 
@@ -47,6 +47,11 @@ export default async function Home({searchParams}) {
                 <CarCard car={car}/>
               ))}
             </div>
+
+            <ShowMore
+              pageNumber = {(searchParams.pageNumber || 10) / 10} 
+              isNextPage = {(searchParams.limit || 10) > carsCatalogue.length}
+            />
             
           </section>
         ) : (
