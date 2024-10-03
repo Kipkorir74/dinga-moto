@@ -41,6 +41,7 @@ export default function Home() {
   }
 
   useEffect(() => {
+    console.log(manufacturer, model, year, fuel, limit);
     getCars();
   }, [manufacturer, model, year, fuel, limit]);
 
@@ -103,8 +104,8 @@ export default function Home() {
 
           </section>
         ) : (
-          <div className="home_error-container">
-            <h2 className="text-black text-xl fon-bold">Salaale, No results</h2>
+          <div className="home__error-container">
+            <h2 className="text-black text-xl text-center font-bold">Salaale, No results</h2>
             <p>{allCars?.message}</p>
           </div>
         )}
